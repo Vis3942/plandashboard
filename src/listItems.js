@@ -18,32 +18,27 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItem>
-    <ListItem button>
+  </div>
+);
+
+export function nodeListItems(nodes) {
+  return nodes.map((element, index) => {
+    var temp_val = element;
+    return (
+      <div
+        key={index}
+      >
+    <ListItem button >
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary={element} />
     </ListItem>
-  </div>
-);
+      </div>
+    );
+  });
+};
+
 
 export const secondaryListItems = (
   <div>

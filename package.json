@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@emotion/react": "latest",
-    "@emotion/styled": "latest",
+    "@emotion/": "latest",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "latest",
     "fontsource-roboto": "^4.0.0",

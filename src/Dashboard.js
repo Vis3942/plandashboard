@@ -17,10 +17,15 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
+import { mainListItems, secondaryListItems, nodeListItems } from './listItems';
+import ChartTable from './ChartTable';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import ListSubheader from '@mui/material/ListSubheader';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import LayersIcon from '@mui/icons-material/Layers';
 
 function Copyright(props) {
   return (
@@ -89,6 +94,21 @@ function DashboardContent() {
     setOpen(!open);
   };
 
+  const [nodesList, setNodesList] = React.useState(['Node1', 'Node-xy', 'Node-abcd36'])
+  const [currentNode, setCurrentNode] = React.useState('Node1')
+
+  // const recvNodes = setTimeout(receivedNodesList, 5000);
+
+  // function receivedNodesList()
+  // {
+  //   setNodesList(['Node1', 'Node-xy', 'Node-abcd36']);
+  //   clearTimeout(recvNodes);
+  // }
+
+  const nodeNameAppBar = function setPageTitle( pageTitle ) {
+    setCurrentNode(pageTitle);
+  }
+
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -118,10 +138,13 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              PLAN IAQ Portal
+            </Typography>
+            <Typography variant="h7" component="div" sx={{ flexGrow: 1 }}>
+              {currentNode}
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
+              <Badge badgeContent={nodesList.length} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -143,7 +166,24 @@ function DashboardContent() {
           <Divider />
           <List>{mainListItems}</List>
           <Divider />
-          <List>{secondaryListItems}</List>
+          <ListSubheader inset>Nodes</ListSubheader>
+          <List>
+          {
+            nodesList.map( (element, index) => (
+              <div key={index}>
+                <ListItem button onClick={() => nodeNameAppBar(element)}>
+                  <ListItemIcon>
+                    <LayersIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={element} />
+                </ListItem>
+              </div>
+            ) ) 
+          }
+
+          </List>
+          <Divider />
+          { /* <List>{secondaryListItems}</List> */ }
         </Drawer>
         <Box
           component="main"
@@ -161,7 +201,7 @@ function DashboardContent() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              <Grid item xs={12} >
                 <Paper
                   sx={{
                     p: 2,
@@ -170,24 +210,11 @@ function DashboardContent() {
                     height: 240,
                   }}
                 >
-                  <Chart />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
+                  <ChartTable />
                 </Paper>
               </Grid>
               {/* Recent Orders */}
-              <Grid item xs={12}>
+              <Grid item xs={12} >
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Orders />
                 </Paper>
