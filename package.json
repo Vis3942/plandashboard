@@ -10,14 +10,16 @@
   },
   "dependencies": {
     "@emotion/react": "latest",
-    "@emotion/": "latest",
+    "@emotion/styled": "latest",
     "@mui/icons-material": "^5.0.5",
     "@mui/material": "latest",
     "fontsource-roboto": "^4.0.0",
     "react": "latest",
     "react-dom": "latest",
+    "react-fluid-table": "^0.4.2",
     "react-scripts": "latest",
-    "recharts": "^2.1.6"
+    "recharts": "^2.1.6",
+    "socket.io-client": "^4.4.0"
   },
   "browserslist": {
     "production": [

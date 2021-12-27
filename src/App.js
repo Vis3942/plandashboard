@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import ProTip from './ProTip';
 import Dashboard from "./Dashboard";
+import io from 'socket.io-client';
+import { useEffect, useRef } from 'react';
 
 function Copyright() {
   return (
@@ -19,7 +21,22 @@ function Copyright() {
   );
 }
 
+
 export default function App() {
+
+  // useEffect(() => {
+  //   const socket = io('http://localhost:9000', {
+  //     transports: ['websocket', 'polling']
+  //   });
+    
+  //   socket.on('node_data', (node_data) => {
+  //     console.log(node_data);
+  //     console.log(node_data.Data[0]);
+  //   });
+
+  //   return () => socket.disconnect();
+  // }, [])
+  
   return (
     <div class="App">
       <Dashboard />
